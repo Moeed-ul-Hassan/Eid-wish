@@ -334,35 +334,39 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            const openBtn = document.getElementById('open-letter');
-            const welcomePage = document.getElementById('welcome-page');
-            const letterContainer = document.getElementById('letter-container');
-            const letter = document.getElementById('letter');
             const nameInput = document.getElementById('user-name');
             const submitNameBtn = document.getElementById('submit-name');
             const nameInputContainer = document.getElementById('name-input-container');
+            const welcomePage = document.getElementById('welcome-page');
             const personalGreeting = document.querySelector('.personal-greeting');
-            const letterSalutation = document.querySelector('.letter-salutation');
+            const letterSalutation = document.querySelector('#letter .letter-salutation');
+            
+            // Initially hide welcome page
+            welcomePage.style.display = 'none';
             
             submitNameBtn.addEventListener('click', function() {
                 const userName = nameInput.value.trim();
                 if (userName) {
-                    // Update name in welcome page and letter
-                    personalGreeting.textContent = `${userName}، گجرات`;
-                    letterSalutation.textContent = `السلام علیکم ${userName}،`;
-                    document.title = `${userName} کے لیے عید مبارک`;
+                    // Update name in both places
+                    personalGreeting.innerHTML = `${userName}، گجرات`;
+                    letterSalutation.innerHTML = `السلام علیکم ${userName}،`;
                     
-                    // Hide name input and show welcome page
+                    // Hide name input
                     nameInputContainer.style.opacity = '0';
-                    welcomePage.style.display = 'flex';
                     
+                    // Show welcome page
+                    welcomePage.style.display = 'flex';
                     setTimeout(() => {
-                        nameInputContainer.style.display = 'none';
                         welcomePage.style.opacity = '1';
-                        createStars();
-                    }, 1000);
+                        nameInputContainer.style.display = 'none';
+                    }, 500);
                 }
             });
+            
+            // Existing letter open functionality
+            const openBtn = document.getElementById('open-letter');
+            const letterContainer = document.getElementById('letter-container');
+            const letter = document.getElementById('letter');
             
             openBtn.addEventListener('click', function() {
                 welcomePage.style.opacity = '0';
@@ -373,10 +377,6 @@
                     letter.style.transform = 'scale(1)';
                     letter.style.opacity = '1';
                 }, 500);
-                
-                setTimeout(() => {
-                    welcomePage.style.display = 'none';
-                }, 1000);
             });
         });
     </script>
