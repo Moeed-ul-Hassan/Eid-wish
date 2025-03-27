@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مؤید الحسن کے لیے عید مبارک</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f0e5d3;
+            font-family: 'Noto Nastaliq Urdu', serif;
+            color: #3a2c0a;
+            overflow-x: hidden;
+        }
+        
+        /* Welcome Animation */
+        .welcome-animation {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://media.islamicity.org/wp-content/uploads/2020/07/Hagia-Sofia-isp.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            display: none;  /* Hide initially */
+        }
+        
+        .title {
+            font-size: 4.5rem;
+            color: #ffd700;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .personal-greeting {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeIn 2s ease 1s forwards;
+            opacity: 0;
+        }
+        
+        .submit-btn {
+            background: transparent;
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            font-family: 'Noto Nastaliq Urdu', serif;
+            transition: all 0.3s ease;
+            animation: fadeIn 2s ease 2s forwards;
+            opacity: 0;
+        }
+        
+        .submit-btn:hover {
+            background: #ffd700;
+            color: #000000;
+            transform: scale(1.05);
+        }
+        
+        .floating-stars {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffffff;
+            box-shadow: 0 0 10px #ffffff;
+            animation: twinkle 1s infinite;
+        }
+        
+        .letter-container {
+            display: none;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .letter {
+            background: #f4e4bc url('https://www.transparenttextures.com/patterns/old-paper-2.png');
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            border: none;
+            line-height: 2;
+            font-size: 1.5rem;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 1s ease;
+            color: #2b1810;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(0,0,0,0.1) 0%,
+                transparent 50%,
+                rgba(0,0,0,0.1) 100%
+            );
+            pointer-events: none;
+        }
+
+        .letter::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.05) 2px,
+                rgba(0,0,0,0.05) 3px
+            );
+            pointer-events: none;
+        }
+        
+        .letter-header {
+            border-bottom: 2px double #2b1810;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .letter-date {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            color: #2b1810;
+            opacity: 0.8;
+        }
+        
+        .letter-salutation {
+            font-size: 1.6rem;
+            margin: 40px 0;
+            color: #2b1810;
+        }
+        
+        .letter-body {
+            text-align: justify;
+            margin-bottom: 40px;
+            color: #2b1810;
+            line-height: 2.2;
+            text-indent: 30px;
+        }
+        
+        .letter-closing {
+            margin-top: 60px;
+            border-top: 1px solid rgba(43, 24, 16, 0.2);
+            padding-top: 30px;
+        }
+        
+        .signature {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 2.2rem;
+            color: #2b1810;
+            margin-top: 20px;
+            text-align: left;
+            transform: rotate(-5deg);
+            opacity: 0.9;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ffd700;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ffd700;
+            }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .floating-moon {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: #f8f3d6;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(248, 243, 214, 0.7);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            .personal-greeting {
+                font-size: 1.5rem;
+            }
+            .letter {
+                padding: 30px 20px;
+                font-size: 1.3rem;
+            }
+        }
+
+        .name-input-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://media.islamicity.org/wp-content/uploads/2020/07/Hagia-Sofia-isp.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .input-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .input-title {
+            color: #ffd700;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .name-input {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #ffd700;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            width: 250px;
+            margin-bottom: 20px;
+            font-family: 'Noto Nastaliq Urdu', serif;
+        }
+
+        .name-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Animation -->
+    <div class="welcome-animation" id="welcome-page">
+        <div class="floating-moon" style="top:15%; left:10%;"></div>
+        <div class="floating-moon" style="bottom:20%; right:15%; width:60px; height:60px; animation-delay:1s;"></div>
+        
+        <h1 class="title">عید الفطر مبارک</h1>
+        <p class="personal-greeting">معید الحسن، گجرات</p>
+        
+        <button class="submit-btn" id="open-letter">خط کھولیں</button>
+    </div>
+    
+    <!-- Name Input Container -->
+    <div class="name-input-container" id="name-input-container">
+        <div class="input-box">
+            <h2 class="input-title">اپنا نام درج کریں</h2>
+            <input type="text" id="user-name" class="name-input" placeholder="آپ کا نام" dir="rtl">
+            <button class="submit-btn" id="submit-name">آگے بڑھیں</button>
+        </div>
+    </div>
+    
+    <!-- Letter Page -->
+    <div class="letter-container" id="letter-container">
+        <div class="letter" id="letter">
+            <div class="letter-header">
+                <div class="letter-date">1 شوال 1446 ہجری</div>
+                <div>گجرات، پاکستان</div>
+            </div>
+            
+            <div class="letter-salutation">
+                السلام علیکم مؤید الحسن،
+            </div>
+            
+            <div class="letter-body">
+                <p>آپ کو اور آپ کے پورے خاندان کو عید الفطر کی بہت بہت مبارک ہو۔ اللہ تعالیٰ ہم سب کے روزوں اور عبادات کو قبول فرمائے، اور ہمیں اپنی رحمت اور مغفرت سے نوازے۔</p>
+                
+                <p>گجرات کے خوبصورت شہر میں آپ کی عید کیسے گزری؟ یہاں تو عید کی تیاریاں پورے زوروں پر ہیں۔ بازاروں میں رونق ہے، بچے نئے کپڑے خرید رہے ہیں، اور گھروں میں میٹھے کی خوشبو پھیل رہی ہے۔</p>
+                
+                <p>ہماری دعا ہے کہ یہ عید آپ کے لیے خوشیوں اور مسرتوں کا باعث بنے۔ رشتے داروں سے ملاقات ہو، گھر میں خوشیاں آئیں، اور اللہ کی رحمت آپ پر سایہ فگن رہے۔</p>
+            </div>
+            
+            <div class="letter-closing">
+                <p>اپنا خیال رکھیں  پھر ملیں گے انشاءاللہ۔</p>
+                <div class="signature">آپ کا ہمیشہ خیر خواہ،</div>
+                <div class="signature">آپ کا دوست</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createStars() {
+            const welcomePage = document.querySelector('.welcome-animation');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'floating-stars';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 2}s`;
+                welcomePage.appendChild(star);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const openBtn = document.getElementById('open-letter');
+            const welcomePage = document.getElementById('welcome-page');
+            const letterContainer = document.getElementById('letter-container');
+            const letter = document.getElementById('letter');
+            const nameInput = document.getElementById('user-name');
+            const submitNameBtn = document.getElementById('submit-name');
+            const nameInputContainer = document.getElementById('name-input-container');
+            const personalGreeting = document.querySelector('.personal-greeting');
+            const letterSalutation = document.querySelector('.letter-salutation');
+            
+            submitNameBtn.addEventListener('click', function() {
+                const userName = nameInput.value.trim();
+                if (userName) {
+                    // Update name in welcome page and letter
+                    personalGreeting.textContent = `${userName}، گجرات`;
+                    letterSalutation.textContent = `السلام علیکم ${userName}،`;
+                    document.title = `${userName} کے لیے عید مبارک`;
+                    
+                    // Hide name input and show welcome page
+                    nameInputContainer.style.opacity = '0';
+                    welcomePage.style.display = 'flex';
+                    
+                    setTimeout(() => {
+                        nameInputContainer.style.display = 'none';
+                        welcomePage.style.opacity = '1';
+                        createStars();
+                    }, 1000);
+                }
+            });
+            
+            openBtn.addEventListener('click', function() {
+                welcomePage.style.opacity = '0';
+                welcomePage.style.pointerEvents = 'none';
+                letterContainer.style.display = 'block';
+                
+                setTimeout(() => {
+                    letter.style.transform = 'scale(1)';
+                    letter.style.opacity = '1';
+                }, 500);
+                
+                setTimeout(() => {
+                    welcomePage.style.display = 'none';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>
